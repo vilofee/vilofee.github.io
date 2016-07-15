@@ -1,0 +1,107 @@
+---
+layout: post
+title:  "使用BIND更好的解决移动APP与后端接口数据调试"
+date:   2015-02-03 16:58:57
+published: true
+categories: server
+---
+
+* 目录
+{:toc}
+
+### 简介
+遇到这个问题的原因是在移动互联网开发中，android 或者ios 的app开发完成后常常需要将http接口的请求定向到某个测试服务器的ip去完成后端接口的测试，
+而频繁的在代码中写死一个地址又显得特别麻烦，部分未破解的ios设备也无法更改host文件去映射域名和ip
+
+而bind 可以很好的解决该问题。
+
+此外通过bind可以将dns配置到该服务器的所有设备，在访问其他域名的时候通过bind的配置，将其他域名也映射到其他的ip地址上。
+
+bind可以将服务器作为dns的解析映射服务器。如线上请求host为 api.xxx.com;
+
+bind可以将一台ip为 111.111.111.111的服务器映射为 api.xxx.com域名。
+
+通过客户端更改DNS配置为111.111.111.111, 可以将对api.xxx.com的访问定向到111.111.111.111上。
+
+### 安装
+
+使用yum即可 :
+
+{% highlight sh %}
+
+yum install bind
+
+{% endhighlight %}
+
+安装完成默认的配置目录为`/etc/named.conf`。
+
+### 一个简单的常用配置
+
+#### /etc/named.conf的配置示例
+
+{% highlight sh %}
+//
+// named.conf
+//
+// Provided by Red Hat bind package to configure the ISC BIND named(8) DNS
+// server as a caching only nameserver (as a localhost DNS resolver only).
+//
+// See /usr/share/doc/bind*/sample/ for example named configuration files.
+//
+
+options {        
+	#forwarders {114.114.114.114; 114.114.115.115;};
+	forwarders {10.11.1.1; 10.11.2.2;}; # 配置转发器，在本机上没有配置的host解析转发到该服务器下。
+	allow-query { 111.111.111.111 ; 222.222.222.222; }; # 允许访问的ip
+	#allow-query { any; };
+	recursion yes;
+};
+
+logging { # 日志文件配置
+    channel default_log {
+	        file "/var/log/named/dns-default.log" versions 10 size 1m;
+	        severity info;
+    };
+    category default {default_log;};
+};
+zone "api1.xxx.com" IN { #将域名api1.xxx.com 按照 /etc/bind/zones/master/db.XXX.com 中配置去映射
+	type master;
+	file "/etc/bind/zones/master/db.XXX.com";
+	allow-update { none;};
+};
+zone "api2.xxx.com" IN { #将域名api2.xxx.com 按照 /etc/bind/zones/master/db.XXX.com 中配置去映射
+	type master;
+	file "/etc/bind/zones/master/db.XXX.com";
+	allow-update { none;};
+};
+zone "api3.xxx.com" IN { #将域名api3.xxx.com 按照 /etc/bind/zones/master/db.XXX.com 中配置去映射
+    type master;
+	file "/etc/bind/zones/master/db.XXX.com";
+	allow-update { none;};
+};
+
+
+{% endhighlight %}
+
+#### /etc/bind/zones/master/db.XXX.com中得域名映射配置
+
+假设本机ip 111.111.111.111
+
+{% highlight sh %}
+
+
+$TTL    3h
+@       IN      SOA     ns1.xxx.com. ns2.xxx.com. (
+                          1        ; Serial
+                          3h       ; Refresh after 3 hours
+                          1h       ; Retry after 1 hour
+                          1w       ; Expire after 1 week
+                          1h )     ; Negative caching TTL of 1 day
+
+	       				IN      NS      ns1
+ns1				    IN		A	   10.11.1.1 #forwarders ip
+api1.xxx.com.		IN      A      111.111.111.111 #local
+api2.xxx.com.       IN      A      222.222.222.222 # anther server
+api3.xxx.com.		IN		A	   111.111.111.111 # local
+
+{% endhighlight %}

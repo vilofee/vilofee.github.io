@@ -1,0 +1,21 @@
+$toc_background_color:#d9edf7;
+
+#markdown-toc {
+  background-color: $toc_background_color;
+  margin: auto;
+  padding: 15px;
+}
+
+#markdown-toc li {
+  list-style-type: none;
+}
+
+.vlf-site-header{
+  margin: 10px 0 10px 0;
+  min-height: 56px;
+  position: relative;
+}
+
+.vlf-title{
+  margin: 0 30px 0 30px;
+}
