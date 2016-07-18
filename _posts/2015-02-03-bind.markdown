@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "使用BIND更好的解决移动APP与后端接口数据调试"
+title:  "工程应用--bind更改DNS做移动端App数据测试"
 date:   2015-02-03 16:58:57
 published: true
-categories: server
+categories: essay
 ---
 
 * 目录

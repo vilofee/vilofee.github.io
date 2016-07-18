@@ -1,11 +1,12 @@
 ---
 layout: post
-title:  "长期学习中的JETTY"
+title:  "Java的Web容器之Jetty"
 date:   2015-02-04 16:58:57
 published: true
-categories: opensource
+categories: coding-java
 ---
 
+## 应用
 
 ### 在 `IntelliJ IDEA` 中新建一个web项目
 

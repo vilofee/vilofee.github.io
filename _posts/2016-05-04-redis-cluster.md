@@ -3,7 +3,7 @@ layout: post
 title: "Redis 集群化方案"
 date: 2016-05-04 12:00:56
 published: true
-categories: opensource
+categories: solution-distribution
 ---
 
 ## Redis集群化的必要性

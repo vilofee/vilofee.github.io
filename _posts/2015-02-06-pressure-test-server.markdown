@@ -1,13 +1,15 @@
 ---
 layout: post
-title:  "服务器的压力测试"
+title:  "工程应用--服务器的压力测试解决方案"
 date:   2015-02-06 16:58:57
 published: true
-categories: server
+categories: solution-other
 ---
 
 * 目录
 {:toc}
+
+# 单url的服务器压力测试
 
 ### boom ([github地址](https://github.com/rakyll/boom))
 
@@ -45,3 +47,13 @@ Options:
   -cpus                 Number of used cpu cores.
                         (default for current machine is 1 cores)
 {% endhighlight %}
+
+
+### apache benchmark
+
+* 待追加
+
+
+# 多url的随机压力测试
+
+* 待追加
