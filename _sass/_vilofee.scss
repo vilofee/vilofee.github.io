@@ -1,7 +1,6 @@
-$toc_background_color:#d9edf7;
 
 #markdown-toc {
-  background-color: $toc_background_color;
+  background-color: #d9edf7;
   margin: auto;
   padding: 15px;
 }
@@ -10,12 +9,24 @@ $toc_background_color:#d9edf7;
   list-style-type: none;
 }
 
-.vlf-site-header{
+.vlf-site-header {
   margin: 10px 0 10px 0;
   min-height: 56px;
   position: relative;
 }
 
-.vlf-title{
+.vlf-title {
   margin: 0 30px 0 30px;
 }
+
+// 修改bootstrap默认的样式
+//.navbar-default {
+//  background-color: #90D5F8;
+//  border-color: #456777;
+//}
+//
+//
+//.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+//  color: #F8F6C1;
+//  background-color: #456777;
+//}
