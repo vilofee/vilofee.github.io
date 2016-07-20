@@ -26,13 +26,6 @@
 
 
 // 修改bootstrap默认的样式
-//.navbar-default {
-//  background-color: #90D5F8;
-//  border-color: #456777;
-//}
-//
-//
-//.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
-//  color: #F8F6C1;
-//  background-color: #456777;
-//}
+.navbar-default {
+  background: linear-gradient(to bottom, #cacaca, #fdfdfd);
+}
