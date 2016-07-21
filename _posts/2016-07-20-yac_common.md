@@ -3,7 +3,7 @@ layout: post
 title: "关于Yac的使用问题"
 date: 2016-07-20 11:41:31
 published: true
-categories: coding-php
+categories: coding-java
 ---
 
 #### 提纲
