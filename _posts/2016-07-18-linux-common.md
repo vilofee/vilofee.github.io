@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Linux系统操作的常用命令收集"
-date:   2015-04-18 16:58:57
+date:   2016-07-18 16:58:57
 published: true
 categories: service-linux
 ---
