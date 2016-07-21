@@ -3,7 +3,7 @@ layout: post
 title:  "工程应用--服务器的压力测试解决方案"
 date:   2015-02-06 16:58:57
 published: true
-categories: solution-other
+categories: service-other
 ---
 
 * 目录
