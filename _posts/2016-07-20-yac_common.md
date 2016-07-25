@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "关于Yac的使用问题"
+title: "[PHP]关于Yac的使用问题"
 date: 2016-07-20 11:41:31
 published: true
-categories: coding-java
+categories: coding-python
 ---
 
 #### 提纲
